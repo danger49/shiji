@@ -1,0 +1,24 @@
+
+
+<script src="./socket.io.js"></script>
+<script>
+  var socket = io('http://127.0.0.1:7002');
+  //监听返回命令
+  socket.on('res', function(data){
+    console.log(data)
+  });
+  socket.on('connect',function(){
+    //发送请求命令
+    socket.emit('index',{test:222});
+  })
+    function submit(){
+    var msg = document.getElementById('cmd').value
+      socket.emit('stock',{cmd:msg})
+    }
+</script>
+<html>
+<title>test</title>
+<body>
+<input id="cmd" type="text"/><button onclick="submit()">提交</button>
+</body>
+</html>
