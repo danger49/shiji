@@ -4,7 +4,7 @@
   "description": "shiji",
   "private": true,
   "dependencies": {
-    "egg": "^2.0.0",
+    "egg": "^1.4.0",
     "egg-scripts": "^2.1.0",
     "egg-schedule": "^3.1.1",
     "egg-socket.io": "^3.0.0",
