@@ -53,7 +53,7 @@ module.exports = appInfo => {
         // password
         password: 'password',
         // database
-        database: 'time',
+        database: 'sj',
       }
     }
   };
