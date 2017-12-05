@@ -1,24 +1,43 @@
-
-
 <script src="./socket.io.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  var socket = io('http://127.0.0.1:7002');
+  var socket = io('http://ws.ushiji.top/');
   //监听返回命令
-  socket.on('res', function(data){
-    console.log(data)
+  socket.on('res', function (data) {
+    console.log('接收到服务器命令res 内容:', data)
+    $('#cmdres').html(JSON.stringify(data));
   });
-  socket.on('connect',function(){
-    //发送请求命令
-    socket.emit('index',{test:222});
+  socket.on('connect', function () {
+    console.log('scocket 连接成功');
   })
-    function submit(){
-    var msg = document.getElementById('cmd').value
-      socket.emit('stock',{cmd:msg})
-    }
+  function submit() {
+    var cmd = document.getElementById('cmd').value
+    var params = document.getElementById('params').value
+    //发送请求命令
+    socket.emit(cmd, params)
+    console.log('发送命令'+cmd +' 参数params:', JSON.stringify(params))
+  }
+
+  function ajaxSubmit() {
+    $.ajax({
+      url: document.getElementById('url').value || "http://ws.ushiji.top/article/",
+      data: {},
+      success: function (result) {
+        console.log('接口返回内容：', result);
+        $('#urlres').html(JSON.stringify(result));
+      }
+    });
+  }
 </script>
 <html>
+<meta charset="UTF-8">
 <title>test</title>
 <body>
-<input id="cmd" type="text"/><button onclick="submit()">提交</button>
+命令：<input id="cmd" type="text"/>参数：<input id="params" type="text"/>
+<button onclick="submit()">socket提交</button><br/>
+URL：<input id="url" type="text"/>
+<button onclick="ajaxSubmit()">ajax提交</button><br/>
+socket接收：<id id="cmdres"></id><br/>
+ajax返回：<id id="urlres"></id>
 </body>
 </html>
