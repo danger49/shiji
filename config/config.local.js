@@ -16,7 +16,7 @@ module.exports = appInfo => {
     methodnoallow: {
       enable: false
     }, 
-    domainWhiteList: [ 'http://ushiji.top' ]
+    domainWhiteList: [ '' ]
   };
   
   exports.cors = {
@@ -83,8 +83,8 @@ module.exports = appInfo => {
 
   //手机短信第三方接口配置
   config.sms = {
-    sdkappid: 1400053302,
-    appkey: '1bcbc126b2dccc9c592d8868eab6c03f',
+    sdkappid: 0,
+    appkey: '',
     singleSmsUrl: 'https://yun.tim.qq.com/v5/tlssmssvr/sendsms',
     multiSmsUrl: 'https://yun.tim.qq.com/v5/tlssmssvr/sendmultisms2',
     smsExpireTime: 120000,
@@ -93,7 +93,7 @@ module.exports = appInfo => {
 
   //JWT TOKEN配置
   config.jwt = {
-    key:"1bcbc126b2dccc9c592d8868eab6c03f",
+    key:"555555555555555",
     expiresIn: "7d",
     loginKeepTime: 604800,
   }
