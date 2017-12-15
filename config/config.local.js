@@ -10,13 +10,15 @@ module.exports = appInfo => {
   config.middleware = ['token'];
 
   config.security = {
-    csrf: false,
+    csrf: {
+      ignoreJSON: true, // 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
+    },
     methodnoallow: {
       enable: false
-    },
-    domainWhiteList: ['http://ushiji.top']
+    }, 
+    domainWhiteList: [ 'http://ushiji.top' ]
   };
-
+  
   exports.cors = {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
@@ -24,7 +26,7 @@ module.exports = appInfo => {
   };
 
   config.io = {
-    init: {}, // passed to engine.io
+    init: { }, // passed to engine.io
     namespace: {
       '/': {
         connectionMiddleware: ['auth'],
@@ -34,7 +36,7 @@ module.exports = appInfo => {
     redis: {
       host: '127.0.0.1',
       port: 6379,
-      password: 'Qwer1234',
+      password: '',
       db: 0
     }
   };
@@ -46,7 +48,7 @@ module.exports = appInfo => {
         database: null,
       },
       // connection pool
-      pool: {min: 0, max: 5},
+      pool: { min: 0, max: 5 },
       // acquire connection timeout, millisecond
       acquireConnectionTimeout: 30000,
     },
@@ -57,16 +59,15 @@ module.exports = appInfo => {
       dialect: 'mysql',
       connection: {
         // host
-        host: 'rm-bp1838vutar7nul06.mysql.rds.aliyuncs.com',
+        host: '127.0.0.1',
         // port
         port: '3306',
         // username
-        user: 'server',
+        user: 'root',
         // password
-        password: 'Qwer1234',
+        password: 'password',
         // database
-        database: 'shiji_server',
-        timezone: 'Asia/Shanghai',
+        database: 'sj',
       }
     }
   };
@@ -75,7 +76,7 @@ module.exports = appInfo => {
     client: {
       port: 6379,          // Redis port
       host: '127.0.0.1',   // Redis host
-      password: 'Qwer1234',
+      password: '',
       db: 0,
     }
   };
@@ -86,7 +87,7 @@ module.exports = appInfo => {
     appkey: '1bcbc126b2dccc9c592d8868eab6c03f',
     singleSmsUrl: 'https://yun.tim.qq.com/v5/tlssmssvr/sendsms',
     multiSmsUrl: 'https://yun.tim.qq.com/v5/tlssmssvr/sendmultisms2',
-    smsExpireTime: 120,
+    smsExpireTime: 120000,
     tplId:63164,
   }
 

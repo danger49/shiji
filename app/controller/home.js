@@ -4,7 +4,7 @@ const BaseController = require('./base')
 
 class HomeController extends BaseController {
   async index() {
-    this.display('shiji')
+    this.display({res:'welcome!'})
   }
 }
 

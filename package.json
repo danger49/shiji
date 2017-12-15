@@ -4,14 +4,22 @@
   "description": "shiji",
   "private": true,
   "dependencies": {
-    "egg": "^1.4.0",
-    "egg-scripts": "^2.1.0",
-    "egg-schedule": "^3.1.1",
-    "egg-socket.io": "^3.0.0",
+    "egg": "^2.0.0",
+    "egg-cluster": "^1.12.6",
+    "egg-cors": "^2.0.0",
     "egg-knex": "^2.0.0",
-    "egg-redis": "^1.0.2",
     "egg-mysql": "^3.0.0",
-    "egg-cluster": "^1.12.6"
+    "egg-redis": "^1.0.2",
+    "egg-schedule": "^3.1.1",
+    "egg-scripts": "^2.1.0",
+    "egg-socket.io": "^4.0.0",
+    "moment": "^2.19.3",
+    "lodash": "^4.17.4",
+    "promise": "^8.0.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "node-schedule": "^1.2.5",
+    "jsonwebtoken": "^8.1.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

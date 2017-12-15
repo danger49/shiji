@@ -9,14 +9,8 @@ class BaseController extends Controller {
    * @param cmd 推送命令
    * @param res 推送内容
    */
-  single(client,cmd,res){
-    this.app.io.of('/').adapter.clients((err, clients) => {
-      console.log(clients); // an array containing all connected socket ids
-      //clients.emit('res', `send to all clients`);
-      for(var i of clients){
-        this.ctx.socket.in(i).emit(cmd, res);
-      }
-    });
+  single(cmd,res){
+    this.ctx.socket.emit(cmd, res);
   }
 
   /**
